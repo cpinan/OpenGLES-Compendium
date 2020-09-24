@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">OpenGLES Examples</string>
+
+    <string name="shape_cube">Cube</string>
+    <string name="shape_cylinder">Cylinder</string>
+    <string name="shape_ico_sphere">IcoSphere</string>
+    <string name="shape_monkey">Monkey</string>
+    <string name="shape_plane">Plane</string>
+    <string name="shape_sphere">Sphere</string>
+    <string name="shape_torus">Torus</string>
+    <string name="shape_tank">Tank</string>
+    <string name="shape_dragon">Dragon</string>
+</resources>
