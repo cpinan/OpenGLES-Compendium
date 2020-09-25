@@ -1,0 +1,485 @@
+------------------------------------------------------------------------
+Basic Data Types
+------------------------------------------------------------------------
+
+    The basic data types for the OpenGL ES 2.0 shader language are:
+
+    void: No function return value
+
+    bool: Boolean
+
+    int: Signed integer
+
+    float: Floating scalar
+
+    vec2, vec3, vec4: 2, 3, and 4 component floating-point vector
+
+    bvec2, bvec3, bvec4: 2, 3, and 4 component Boolean vector
+
+    ivec2, ivec3, ivec4: 2, 3, and 4 component signed integer vector
+
+    mat2, mat3, mat4: 2-by-2, 3-by-3, and 4-by-4 float matrices
+
+    sampler2D: Used to represent and access a 2D texture
+
+    samplerCube: Used to represent and access a cube mapped texture
+
+    float floatarray[3]: One-dimensional arrays; can be of types such as floats, vectors, and integers
+
+------------------------------------------------------------------------
+Vector Components
+------------------------------------------------------------------------
+
+    In the vertex and fragment shader language, you can refer to vector components in different ways.
+    For example, you can address components in a vec4 type in the following ways:
+
+    	{x, y, z, w}: You can use this representation when accessing vectors that
+    represent points or normals.
+    vec3 position;
+    position.x = 1.0f;
+
+    	{r, g, b, a}: You can use this representation when accessing vectors that
+    represent colors.
+    vec4 color;
+    color.r = 1.0f;
+
+    	{s, t, p, q}: You can use this representation when accessing vectors that
+    represent texture coordinates.
+    vec2 texcoord;
+    texcoord.s = 1.0f;
+
+------------------------------------------------------------------------
+Operators and Expressions
+------------------------------------------------------------------------
+
+    Some of the important operators involved in statements and expressions in the vertex and
+    fragment shader language are specified in the following list. The operators are basically similar to
+    corresponding operators in the Java and C++ languages.
+
+    ++ Increment operator
+    -- Decrement operator
+    + Addition operator
+    - Subtraction operator
+    ! Not operator
+    * Multiply operator
+    / Divide by operator
+    < Less than relational operator
+    > Greater than relational operator
+    <= Less than or equal to relational operator
+    >= Greater than or equal to relational operator
+    == Conditional equals operator
+    != Not equal to conditional operator
+    && Logical and operator
+    ^^ Logical exclusive or operator
+    || Logical inclusive or operator
+    = Assignment operator
+    += Addition and assignment operator
+    -= Subtraction and assignment operator
+    *= Multiplication and assignment operator
+    /= Division and assignment operator
+
+------------------------------------------------------------------------
+Program Flow Control Statements
+------------------------------------------------------------------------
+
+    The important program flow control statements for the OpenGL ES 2.0 shader language follow.
+    for loop: To use a for loop, initialize the counter value before starting the loop;
+    execute the loop, if the expression evaluates to true; at the end of the loop, update
+    the counter value; and repeat the loop, if the expression in the for loop evaluates
+    to true.
+
+    for(Initial counter value;
+    Expression to be evaluated;
+    Counter increment/decrement value)
+    {
+    // Statements to be executed.
+    }
+
+    while loop: Execute the statements in the while loop, as long as the expression to
+    be evaluated is true.
+
+    while( Expression to evaluate )
+    {
+    // Statement to be executed
+    }
+
+    if statement: If the expression evaluates to true, then the statements within the if
+    block are executed.
+
+    if (Expression to evaluate )
+    {
+    // Statements to execute
+    }
+
+    if else statement: Execute the statements in the if block; if expression evaluates
+    to true else, execute the statements in the else block.
+
+    if (Expression to evaluate)
+    {
+    // Statement to execute if expression is true
+    }
+    else
+    {
+    // Statement to execute if expression is false
+    }
+
+------------------------------------------------------------------------
+Storage Qualifiers
+------------------------------------------------------------------------
+
+    Storage qualifiers indicate how variables will be used in the shader program. From this information,
+    the compiler can more efficiently process and store the shader variables.
+
+    Const: The const qualifier specifies a compile time constant or a read-only function
+    parameter.
+
+    Const int NumberLights = 3;
+
+
+    Attribute: The attribute qualifier specifies a linkage between a vertex shader and
+    the main OpenGL ES 2.0 program for per-vertex data. Some examples of the types
+    of variables where the attribute qualifier can be used are vertex position, vertex
+    textures, and vertex normal.
+
+    attribute vec3 aPosition;
+    attribute vec2 aTextureCoord;
+    attribute vec3 aNormal;
+
+
+    Uniform: The uniform qualifier specifies that the value does not change across the
+    primitive being processed. Uniform variables form the linkage between a vertex
+    or fragment shader and the main OpenGL ES 2.0 application. Some examples
+    of variables where the uniform qualifier would be appropriate are lighting values,
+    material values, and matrices.
+
+    uniform vec3 uLightAmbient;
+    uniform vec3 uLightDiffuse;
+    uniform vec3 uLightSpecular;
+
+
+    Varying: The varying qualifier specifies a variable that occurs both in the vertex
+    shader and fragment shader. This creates the linkage between a vertex shader and
+    fragment shader for interpolated data. These are usually values for the diffuse and
+    the specular lighting that will be passed from the vertex shader to the fragment
+    shader. Texture coordinates, if present, are also varying. The values of the diffuse and
+    specular lighting, as well as textures, are interpolated or “varying” across the object
+    the shader is rendering. Some examples of varying variables are the vertex texture
+    coordinate, the diffuse color of the vertex, and the specular color of the vertex.
+
+    varying vec2 vTextureCoord;
+    varying float vDiffuse;
+    varying float vSpecular;
+
+------------------------------------------------------------------------
+Reserved Variables
+------------------------------------------------------------------------
+
+    The main important reserved variable names within the OpenGL ES 2.0 shader language that we will
+    be using in this book are specified in the following list.
+
+    vec4 gl_Position: Reserved variable within the vertex shader that holds the final
+    transformed vertex to be displayed on the screen
+
+    vec4 gl_FragColor: Reserved variable within the fragment shader that holds the
+    color of the vertex that has just been processed by the vertex shader
+
+------------------------------------------------------------------------
+Built-in Functions
+------------------------------------------------------------------------
+
+    This list provides some of the important built-in functions in the shading language.
+
+    float radians(float degrees): Converts degrees to radians and returns radians
+
+    float degrees(float radians): Converts radians to degrees and returns degrees
+
+    float sin(float angle): Returns the sine of an angle measured in radians
+
+    float cos(float angle): Returns the cosine of an angle measured in radians
+
+    float tan(float angle): Returns the tangent of an angle measured in radians
+
+    float asin(float x): Returns the angle whose sine is x
+
+    float acos(float x): Returns the angle whose cosine is x
+
+    float atan(float y, float x): Returns the angle whose tangent is specified by the slope y/x
+
+    float atan(float slope): Returns the angle whose tangent is slope
+
+    float abs(float x): Returns the absolute value of x
+
+    float length(vec3 x): Returns the length of vector x
+
+    float distance(vec3 point0, vec3 point1): Returns the distance between point0 and point1
+
+    float dot(vec3 x, vec3 y): Returns the dot product between two vectors x and y
+
+    vec3 cross(vec3 x, vec3 y): Returns the cross product of two vectors x and y
+
+    vec3 normalize(vec3 x): Normalizes the vector to a length of 1 and then returns it
+
+    float pow(float x, float y): Calculates x to the power of y and return it
+
+    float min(float x, float y): Returns the minimum value between x and y
+
+    float max(float x, float y): Returns the maximum value between x and y
+
+------------------------------------------------------------------------
+Overview of Vertex Shaders
+------------------------------------------------------------------------
+
+    In OpenGL ES 2.0, vertex shaders and fragment shaders are required to render 3D objects. The
+    general purpose of the vertex shader is to position vertices in the 3D world and to determine vertex
+    properties such as diffuse and specular lighting at that vertex. A simple vertex shader example is
+    given in Listing 4-3.
+
+    Listing 4-3. Simple Vertex Shader
+
+    // Vertex Shader
+    uniform mat4 uMVPMatrix;
+    attribute vec3 aPosition;
+    uniform vec3 vColor;
+    varying vec3 Color;
+    void main()
+    {
+        gl_Position = uMVPMatrix * vec4(aPosition,1);
+        Color = vColor;
+    }
+
+    The variable uMVPMatrix holds the 4-by-4 ModelViewProjection matrix that will be used to transform
+    the vertex. The ModelViewProjection matrix is simply the multiplication of the model matrix, the view
+    matrix, and the projection matrix into one single matrix. The uniform qualifier is used, because this
+    matrix does not change when the object is rendered. That is, that same matrix is used for all the
+    vertices on the object being rendered.
+
+    The aPosition variable is a vector that holds the (x,y,z) position of the vertex of the object in its initial
+    local object coordinates. The attribute qualifier indicates that this variable will receive input from the
+    main OpenGL ES 2.0 application. This is how a vertex shader program is sent vertex data.
+    The vColor variable is a vector that holds the (r,g,b) input color values of the object to be rendered.
+    The vColor is copied into the Color variable and is sent to the fragment shader for processing.
+    Variables that are linked to the fragment shader must be declared varying.
+
+    The main code itself is located within a main() block. The gl_Position variable is a reserved variable
+    that transforms the vertex by multiplying its position by the uMVPMatrix (ModelViewProjection
+    Matrix). This produces the projection of the 3D vertex on a 2D surface and puts the vertex in
+    clip coordinates. Also, note how a vec3 is converted to a vec4 by using the vec4(aPosition,1)
+    constructor.
+
+------------------------------------------------------------------------
+Overview of Fragment or Pixel Shaders
+------------------------------------------------------------------------
+
+    Fragment shaders are used to determine the color of the pixels on the screen of a rendered 3D
+    object. Listing 4-4 outputs the color passed in from the vertex shader in the previous section through
+    the varying vector variable Color.
+
+    Listing 4-4. Simple Fragment Shader
+    // Fragment Shader
+    varying vec3 Color;
+    void main()
+    {
+        gl_FragColor = vec4(Color,1);
+    }
+
+    The gl_FragColor variable is a reserved variable that outputs the actual color of the fragment.
+    An example of a more complex fragment shader is shown graphically in Figure 4-13. Here a texture,
+    texture coordinate, diffuse lighting, specular lighting, a light source, and an object material all
+    contribute to the final color of the object being rendered. I discuss these subjects in more detail later
+    in this chapter
+
+------------------------------------------------------------------------
+
+Understanding matrices
+// New class definitions
+ /**
+ * Store the view matrix. This can be thought of as our camera. This matrix transforms world space to eye space;
+ * it positions things relative to our eye.
+ */
+private float[] mViewMatrix = new float[16];
+
+@Override
+public void onSurfaceCreated(GL10 glUnused, EGLConfig config)
+{
+    // Set the background clear color to gray.
+    GLES20.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
+
+    // Position the eye behind the origin.
+    final float eyeX = 0.0f;
+    final float eyeY = 0.0f;
+    final float eyeZ = 1.5f;
+
+    // We are looking toward the distance
+    final float lookX = 0.0f;
+    final float lookY = 0.0f;
+    final float lookZ = -5.0f;
+
+    // Set our up vector. This is where our head would be pointing were we holding the camera.
+    final float upX = 0.0f;
+    final float upY = 1.0f;
+    final float upZ = 0.0f;
+
+    // Set the view matrix. This matrix can be said to represent the camera position.
+    // NOTE: In OpenGL 1, a ModelView matrix is used, which is a combination of a model and
+    // view matrix. In OpenGL 2, we can keep track of these matrices separately if we choose.
+    Matrix.setLookAtM(mViewMatrix, 0, eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ);
+
+
+Defining vertex and fragment shaders
+
+final String vertexShader =
+    "uniform mat4 u_MVPMatrix;      \n"     // A constant representing the combined model/view/projection matrix.
+
+  + "attribute vec4 a_Position;     \n"     // Per-vertex position information we will pass in.
+  + "attribute vec4 a_Color;        \n"     // Per-vertex color information we will pass in.
+
+  + "varying vec4 v_Color;          \n"     // This will be passed into the fragment shader.
+
+  + "void main()                    \n"     // The entry point for our vertex shader.
+  + "{                              \n"
+  + "   v_Color = a_Color;          \n"     // Pass the color through to the fragment shader.
+                                            // It will be interpolated across the triangle.
+  + "   gl_Position = u_MVPMatrix   \n"     // gl_Position is a special variable used to store the final position.
+  + "               * a_Position;   \n"     // Multiply the vertex by the matrix to get the final point in
+  + "}                              \n";    // normalized screen coordinates.
+
+
+final String fragmentShader =
+    "precision mediump float;       \n"     // Set the default precision to medium. We don't need as high of a
+                                            // precision in the fragment shader.
+  + "varying vec4 v_Color;          \n"     // This is the color from the vertex shader interpolated across the
+                                            // triangle per fragment.
+  + "void main()                    \n"     // The entry point for our fragment shader.
+  + "{                              \n"
+  + "   gl_FragColor = v_Color;     \n"     // Pass the color directly through the pipeline.
+  + "}                              \n";
+
+
+Setting the perspective projection
+
+// New class members
+/** Store the projection matrix. This is used to project the scene onto a 2D viewport. */
+private float[] mProjectionMatrix = new float[16];
+
+@Override
+public void onSurfaceChanged(GL10 glUnused, int width, int height)
+{
+    // Set the OpenGL viewport to the same size as the surface.
+    GLES20.glViewport(0, 0, width, height);
+
+    // Create a new perspective projection matrix. The height will stay the same
+    // while the width will vary as per aspect ratio.
+    final float ratio = (float) width / height;
+    final float left = -ratio;
+    final float right = ratio;
+    final float bottom = -1.0f;
+    final float top = 1.0f;
+    final float near = 1.0f;
+    final float far = 10.0f;
+
+    Matrix.frustumM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
+}
+
+//New class members
+/** This will be used to pass in the transformation matrix. */
+private int mMVPMatrixHandle;
+
+/** This will be used to pass in model position information. */
+private int mPositionHandle;
+
+/** This will be used to pass in model color information. */
+private int mColorHandle;
+
+@Override
+public void onSurfaceCreated(GL10 glUnused, EGLConfig config)
+{
+    ...
+
+    // Set program handles. These will later be used to pass in values to the program.
+    mMVPMatrixHandle = GLES20.glGetUniformLocation(programHandle, "u_MVPMatrix");
+    mPositionHandle = GLES20.glGetAttribLocation(programHandle, "a_Position");
+    mColorHandle = GLES20.glGetAttribLocation(programHandle, "a_Color");
+
+    // Tell OpenGL to use this program when rendering.
+    GLES20.glUseProgram(programHandle);
+}
+
+
+Drawing stuff to the screen!
+    // New class members
+    /**
+     * Store the model matrix. This matrix is used to move models from object space (where each model can be thought
+     * of being located at the center of the universe) to world space.
+     */
+    private float[] mModelMatrix = new float[16];
+
+    @Override
+    public void onDrawFrame(GL10 glUnused)
+    {
+        GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
+
+        // Do a complete rotation every 10 seconds.
+        long time = SystemClock.uptimeMillis() % 10000L;
+        float angleInDegrees = (360.0f / 10000.0f) * ((int) time);
+
+        // Draw the triangle facing straight on.
+        Matrix.setIdentityM(mModelMatrix, 0);
+        Matrix.rotateM(mModelMatrix, 0, angleInDegrees, 0.0f, 0.0f, 1.0f);
+        drawTriangle(mTriangle1Vertices);
+
+        ...
+}
+
+
+
+// New class members
+/** Allocate storage for the final combined matrix. This will be passed into the shader program. */
+private float[] mMVPMatrix = new float[16];
+
+/** How many elements per vertex. */
+private final int mStrideBytes = 7 * mBytesPerFloat;
+
+/** Offset of the position data. */
+private final int mPositionOffset = 0;
+
+/** Size of the position data in elements. */
+private final int mPositionDataSize = 3;
+
+/** Offset of the color data. */
+private final int mColorOffset = 3;
+
+/** Size of the color data in elements. */
+private final int mColorDataSize = 4;
+
+/**
+ * Draws a triangle from the given vertex data.
+ *
+ * @param aTriangleBuffer The buffer containing the vertex data.
+ */
+private void drawTriangle(final FloatBuffer aTriangleBuffer)
+{
+    // Pass in the position information
+    aTriangleBuffer.position(mPositionOffset);
+    GLES20.glVertexAttribPointer(mPositionHandle, mPositionDataSize, GLES20.GL_FLOAT, false,
+            mStrideBytes, aTriangleBuffer);
+
+    GLES20.glEnableVertexAttribArray(mPositionHandle);
+
+    // Pass in the color information
+    aTriangleBuffer.position(mColorOffset);
+    GLES20.glVertexAttribPointer(mColorHandle, mColorDataSize, GLES20.GL_FLOAT, false,
+            mStrideBytes, aTriangleBuffer);
+
+    GLES20.glEnableVertexAttribArray(mColorHandle);
+
+    // This multiplies the view matrix by the model matrix, and stores the result in the MVP matrix
+    // (which currently contains model * view).
+    Matrix.multiplyMM(mMVPMatrix, 0, mViewMatrix, 0, mModelMatrix, 0);
+
+    // This multiplies the modelview matrix by the projection matrix, and stores the result in the MVP matrix
+    // (which now contains model * view * projection).
+    Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mMVPMatrix, 0);
+
+    GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mMVPMatrix, 0);
+    GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 3);
+}

@@ -174,6 +174,11 @@ class OBJActivity : AppCompatActivity() {
             GLES32.glEnable(GLES32.GL_DEPTH_TEST)
             GLES32.glDepthFunc(GLES32.GL_LEQUAL)
 
+            /*
+            // Use culling to remove back faces.
+            GLES32.glEnable(GLES20.GL_CULL_FACE);
+             */
+
             setupCamera()
 
             Matrix.setIdentityM(modelViewProjectionMatrix, 0)
