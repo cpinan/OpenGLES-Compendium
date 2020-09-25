@@ -51,6 +51,10 @@ abstract class Object3D(
             checkGLError("glBindTexture $textureHandle")
 
             //set filtering
+            /*
+            GL_TEXTURE_MIN_FILTER — This tells OpenGL what type of filtering
+            to apply when drawing the texture smaller than the original size in pixels.
+             */
             GLES32.glTexParameteri(
                 GLES32.GL_TEXTURE_2D,
                 GLES32.GL_TEXTURE_MIN_FILTER,
@@ -58,6 +62,11 @@ abstract class Object3D(
             )
             checkGLError("glTexParameteri - GL_TEXTURE_MIN_FILTER")
 
+            /*
+            GL_TEXTURE_MAG_FILTER — This tells OpenGL what type of
+            filtering to apply when magnifying the texture beyond
+            its original size in pixels.
+             */
             GLES32.glTexParameteri(
                 GLES32.GL_TEXTURE_2D,
                 GLES32.GL_TEXTURE_MAG_FILTER,
