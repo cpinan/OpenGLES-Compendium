@@ -21,6 +21,10 @@ You can check the code here:
 
 + [3D Graphics and Sensor Code](https://github.com/cpinan/OpenGLES-Compendium/tree/master/ImperialColllegeOfLondon/3DGraphicsinAndroidSensorsandVR)
 
+If you want to check a canvas 3D example, take a look at this:
+
+[![Canvas 3D](http://img.youtube.com/vi/iXw2VfPvmJ8/0.jpg)](https://youtu.be/iXw2VfPvmJ8)
+
 It's still in progress, but it contains great examples of:
 
 + Light
@@ -57,3 +61,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ### Tags
 
 android opengles
+
+
+### Sources
+
++ https://learnopengl.com/Introduction
